@@ -60,38 +60,19 @@ const CardGrader: React.FC = () => {
         if (!image) return;
         setLoading(true);
         setError(null);
-
-        // Validate API Key
-        const apiKey = import.meta.env.VITE_XIMILAR_API_KEY;
-        if (!apiKey) {
-            setError("Missing API key. Please check your .env file.");
-            setLoading(false);
-            return;
-        }
-
+    
         try {
-            console.log("API Key:", apiKey);
             console.log("Converting image to Base64...");
-
-            // Convert uploaded image to Base64
             const base64Image = await toBase64(image);
-            const base64Data = base64Image.includes(",") ? base64Image.split(",")[1] : base64Image;
-
-            console.log("Base64 Image Ready. Sending request to Ximilar...");
-
+            const base64Data = base64Image.split(",")[1];
+    
+            console.log("Sending request to Netlify Function...");
             const response = await axios.post(
-                "https://api.ximilar.com/card-grader/v2/grade",
-                {
-                    records: [{ _base64: base64Data }]
-                },
-                {
-                    headers: {
-                        Authorization: `Token ${apiKey}`,
-                        "Content-Type": "application/json",
-                    },
-                }
+                "/.netlify/functions/cardGrader", // Call the Netlify function instead of Ximilar API
+                { records: [{ _base64: base64Data }] },
+                { headers: { "Content-Type": "application/json" } }
             );
-
+    
             console.log("API Response:", response.data);
             setGradingResult(response.data);
         } catch (error: any) {
@@ -100,6 +81,7 @@ const CardGrader: React.FC = () => {
         }
         setLoading(false);
     };
+    
 
     return (
         <div className="p-6 max-w-md mx-auto bg-white rounded-xl shadow-md space-y-4">
