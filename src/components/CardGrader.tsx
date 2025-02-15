@@ -62,11 +62,22 @@ const CardGrader: React.FC = () => {
     // Open Camera
     const startCamera = async () => {
         setCameraOpen(true);
-        if (videoRef.current) {
-            const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-            videoRef.current.srcObject = stream;
+        
+        try {
+            const stream = await navigator.mediaDevices.getUserMedia({
+                video: { facingMode: { exact: "environment" } }, // Forces back camera
+            });
+    
+            if (videoRef.current) {
+                videoRef.current.srcObject = stream;
+            }
+        } catch (error) {
+            console.error("Error accessing camera:", error);
+            setError("Could not access the back camera. Try allowing camera permissions.");
+            setCameraOpen(false);
         }
     };
+    
 
     // Capture Image from Camera
     const captureImage = () => {
