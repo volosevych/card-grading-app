@@ -23,7 +23,7 @@ I wanted to practice:
 
 - **Backend:** Node.js
 - **Frontend:** TypeScript / React / Vite
-- **Deployment:** Vercel
+- **Deployment:** Netlify
 
 ## 📂 How to Run
 
