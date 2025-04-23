@@ -21,7 +21,6 @@ I wanted to practice:
 
 ## 🔧 Tech Stack
 
-- **Backend:** Node.js
 - **Frontend:** TypeScript / React / Vite
 - **Deployment:** Netlify
 
