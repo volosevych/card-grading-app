@@ -1,50 +1,41 @@
-# React + TypeScript + Vite
+# 🃏 Card Grading App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a small project I created to refresh and sharpen my API development skills.  
+It's a card grading app that simulates a service for evaluating the condition of collectible cards.
 
-Currently, two official plugins are available:
+## 🚧 Disclaimer
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This app is not a full-fledged production service and **not intended for public or commercial use**.  
+It was built for educational and personal learning purposes only.
 
-## Expanding the ESLint configuration
+> **Note:** This is **not a free service**. While the app is functional, it may involve costs related to third-party APIs or services it depends on.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## 🧠 Why I Made This
 
-- Configure the top-level `parserOptions` property like this:
+I wanted to practice:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- Designing clean APIs
+- Working with asynchronous operations
+- Handling user input and card data
+- Building a small full-stack app workflow
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## 🔧 Tech Stack
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+- **Backend:** Node.js
+- **Frontend:** TypeScript / React / Vite
+- **Deployment:** Vercel
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## 📂 How to Run
+
+```bash
+# Clone the repository
+git clone https://github.com/volosevych/card-grading-app.git
+
+# Navigate into the project directory
+cd card-grading-app
+
+# Install dependencies
+npm install
+
+# Start the app
+npm start
